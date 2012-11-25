@@ -1,0 +1,5 @@
+ ActionController::Routing::Routes.draw do |map|
+   map.with_options :controller => 'issues' do |reject_routes|
+     reject_routes.connect :action => 'edit', :isRejected => true
+   end
+ end
