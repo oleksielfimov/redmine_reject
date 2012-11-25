@@ -1,6 +1,6 @@
 <div class="contextual">
-<% if @reject.present? %>
-<%= link_to(l(:button_reject), {:controller => 'issues', :id => @issue, :action => 'reject' }, :class => 'icon icon-reject') %>
+<% if User.current == @issue.assigned_to %>
+<%= link_to(l(:button_reject), {:controller => 'issues', :id => @issue, :action => 'reject' }, :class => 'icon icon-move') %>
 <% end %>
 <%= link_to_if_authorized(l(:button_update), {:controller => 'issues', :action => 'edit', :id => @issue }, :onclick => 'showAndScrollTo("update", "notes"); return false;', :class => 'icon icon-edit', :accesskey => accesskey(:edit)) %>
 <%= link_to_if_authorized l(:button_log_time), {:controller => 'timelog', :action => 'new', :issue_id => @issue}, :class => 'icon icon-time-add' %>

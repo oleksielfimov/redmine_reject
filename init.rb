@@ -1,16 +1,16 @@
 require 'redmine'
-require 'dispatcher'
+require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
 require 'issues_patch'
- 
-Dispatcher.to_prepare do
-  Issue.send(:include, IssuesPatch)
+
+if Rails::VERSION::MAJOR >= 3
+  Rails.configuration.to_prepare do
+    Issue.send(:include, IssuePatch)
+  end
+else
+  Dispatcher.to_prepare do
+    Issue.send(:include, IssuesPatch)
+  end
 end
-# require File.join(File.dirname(__FILE__), 'assets' ) if RAILS_ENV == 'production'
-
-
-#RedmineApp::Application.routes.draw do
-#  match 'reject' => 'issues#reject'
-#end
 
 Redmine::Plugin.register :redmine_reject do
   name 'Redmine Reject tasks plugin'

@@ -65,7 +65,7 @@
                                        :multipart => true} do |f| %>
     <%= error_messages_for 'issue', 'time_entry' %>
 
-<h3>Issue assigne will be changed from <i><%= User.current %></i> to <i><%= @issue.reject_assigne %></i></h3></br>
+<h3>Issue assign will be changed from <i><%= User.current %></i> to <i><%= @issue.reject_assign %></i></h3></br>
 <p><%= f.hidden_field :assigned_to_id, :value => @issue.reject %></p>
 
 <fieldset><legend><%= l(:field_notes) %><span class="required">*</span></legend>
