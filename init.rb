@@ -4,7 +4,7 @@ require 'issues_patch'
 
 if Rails::VERSION::MAJOR >= 3
   Rails.configuration.to_prepare do
-    Issue.send(:include, IssuePatch)
+    Issue.send(:include, IssuesPatch)
   end
 else
   Dispatcher.to_prepare do
