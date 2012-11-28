@@ -59,47 +59,7 @@
     <%= f.hidden_field :lock_version %>
     <%= hidden_field_tag 'last_journal_id', params[:last_journal_id] || @issue.last_journal_id %>
     <%= submit_tag l(:button_submit) %>
-<<<<<<< HEAD
     <%= preview_link preview_edit_issue_path(:project_id => @project, :id => @issue), 'issue-form' %>
-=======
-    <%= link_to_remote l(:label_preview),
-                       { :url => preview_issue_path(:project_id => @project, :id => @issue),
-                         :method => 'post',
-                         :update => 'preview',
-                         :with => 'Form.serialize("issue-form")',
-                         :complete => "Element.scrollTo('preview')"
-                       }, :accesskey => accesskey(:preview) %>
-<% end %>
-
-<div id="preview" class="wiki"></div>
-
-<% else %>
-<% labelled_tabular_form_for :issue, @issue,
-     :url => {:action => 'update', :id => @issue},
-                             :html => {:id => 'issue-form',
-                                       :class => nil,
-                                       :method => :put,
-                                       :multipart => true} do |f| %>
-    <%= error_messages_for 'issue', 'time_entry' %>
-
-<h3>Issue assign will be changed from <i><%= User.current %></i> to <i><%= @issue.reject_assign %></i></h3></br>
-<p><%= f.hidden_field :assigned_to_id, :value => @issue.reject %></p>
-
-<fieldset><legend><%= l(:field_notes) %><span class="required">*</span></legend>
-    <%= text_area_tag 'notes', @notes, :cols => 60, :rows => 10, :class => 'wiki-edit', :required => true  %>
-    <%= wikitoolbar_for 'notes' %>
-    <%= call_hook(:view_issues_edit_notes_bottom, { :issue => @issue, :notes => @notes, :form => f }) %>
-
-<%= f.hidden_field :lock_version %>
-    <%= submit_tag l(:button_submit) %>
-    <%= link_to_remote l(:label_preview),
-                       { :url => preview_issue_path(:project_id => @project, :id => @issue),
-                         :method => 'post',
-                         :update => 'preview',
-                         :with => 'Form.serialize("issue-form")',
-                         :complete => "Element.scrollTo('preview')"
-                       }, :accesskey => accesskey(:preview) %>
->>>>>>> de5fd339163bf011421274a495d087c55453d3aa
 <% end %>
 <% end %>
 <div id="preview" class="wiki"></div>

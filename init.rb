@@ -1,18 +1,10 @@
 require 'redmine'
-<<<<<<< HEAD
 
-=======
-require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
-require 'issues_patch'
->>>>>>> de5fd339163bf011421274a495d087c55453d3aa
 
 if Rails::VERSION::MAJOR >= 3
   Rails.configuration.to_prepare do
     Issue.send(:include, IssuesPatch)
-<<<<<<< HEAD
     IssuesController.send(:include, IssuesControllerPatch)
-=======
->>>>>>> de5fd339163bf011421274a495d087c55453d3aa
   end
 else
   Dispatcher.to_prepare do
