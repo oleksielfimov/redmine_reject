@@ -1,7 +1,7 @@
 <% if @reject_id.present? %>
 <%= labelled_fields_for :issue, @issue do |f| %>
-<h3>Issue assign will be changed from <i><%= User.current %></i> to <i><%= @issue.reject_assign %></i></h3></br>
-<p><%= f.hidden_field :assigned_to_id, :value => @issue.reject %></p>
+<h3>Issue assign will be changed from <i><%= User.current %></i> to <i><%= @user_reject %></i></h3></br>
+<p><%= f.hidden_field :assigned_to_id, :value => @user_reject_id %></p>
 <% end %>
 <% else %>
 <%= labelled_fields_for :issue, @issue do |f| %>
