@@ -1,3 +1,6 @@
-= reject
+= Redmine reject button 
 
-Description goes here
+
+This plugin is used for changing current issue assign on previously assigned user. This is possible if current active user is assigned for issue.
+
+
